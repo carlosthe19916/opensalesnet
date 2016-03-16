@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ServiceModel;
 using org.ahren.manager.api.beans.representations;
+using org.ahren.manager.api.beans.representation.search;
+using System.ServiceModel.Web;
 
 namespace org.ahren.manager.api.services
 {
@@ -14,30 +13,18 @@ namespace org.ahren.manager.api.services
 
         TipoDocumentoResource oficina(String oficinaId);
 
+        [WebInvoke]
+        [OperationContract]
         void create(OficinaRepresentation rep);
 
-        IList<OficinaRepresentation> search(String abreviatura,
-            String denominacion, String tipoPersona,
-            Boolean estado, String filterText,
-            Int32 firstResult, Int32 maxResults);
-
-        SearchResultsRepresentation<OficinaRepresentation> search(SearchCriteriaRepresentation criteria);
-
-
+        [WebGet]
         [OperationContract]
-        void AddProductDetail(string productName, string productDescription);
+        IList<OficinaRepresentation> search(String abreviatura, String denominacion, String tipoPersona, 
+            Boolean estado, String filterText, Int32 firstResult, Int32 maxResults);
 
-        [OperationContract]
-        void UpdateProductDetail(int updateId, string productName, string productDescription);
-
-        [OperationContract]
-        void DeleteProductDetail(int id);
-
-        [OperationContract]
-        string EditProductDetail(int id);
-
-        [OperationContract]
-        string LoadAllProductDetail();
+        [WebInvoke]
+        [OperationContract]        
+        SearchResultsRepresentation<OficinaRepresentation> search(SearchCriteriaRepresentation criteria);            
 
     }
 }

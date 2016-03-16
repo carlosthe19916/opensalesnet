@@ -1,32 +1,21 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace org.ahren.manager.api.beans.representation.search
 {
+    [DataContract]
     public class PagingRepresentation
     {
        
-        private int page { get; set; }
+        [DataMember]
+        public int page { get; set; }
 
-        private int pageSize;
+        [DataMember]
+        public int pageSize { get; set; }
 
-        public int getPage()
+        public PagingRepresentation()
         {
-            return page;
-        }
 
-        public void setPage(int page)
-        {
-            this.page = page;
-        }
-
-        public int getPageSize()
-        {
-            return pageSize;
-        }
-
-        public void setPageSize(int pageSize)
-        {
-            this.pageSize = pageSize;
         }
 
     }
