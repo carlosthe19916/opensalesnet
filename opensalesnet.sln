@@ -47,6 +47,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.common.testsuite"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.beans.representations.info", "org.ahren.manager.api.beans.representations.info\org.ahren.manager.api.beans.representations.info.csproj", "{A7F76A8B-71B5-4E2C-A6F1-A91CA74F5D30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.services.impl", "org.ahren.manager.api.services\org.ahren.manager.api.services.impl.csproj", "{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.services.info.impl", "org.ahren.manager.api.services.info.impl\org.ahren.manager.api.services.info.impl.csproj", "{C48CE289-5ABD-4B27-A946-3D146F03B25D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ef", "ef", "{EAA45DFA-1736-421C-98C5-166B17B5D6F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.ef", "org.ahren.manager.api.ef\org.ahren.manager.api.ef.csproj", "{CC81D9DF-5A5D-4855-BB32-5A236A97A630}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{E420804D-7DB4-4C7D-9BEA-31A379F48B19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.web", "org.ahren.web\org.ahren.web.csproj", "{A6D762F8-2737-4D48-A99D-C965658C65BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +117,22 @@ Global
 		{A7F76A8B-71B5-4E2C-A6F1-A91CA74F5D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F76A8B-71B5-4E2C-A6F1-A91CA74F5D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7F76A8B-71B5-4E2C-A6F1-A91CA74F5D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48CE289-5ABD-4B27-A946-3D146F03B25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48CE289-5ABD-4B27-A946-3D146F03B25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48CE289-5ABD-4B27-A946-3D146F03B25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48CE289-5ABD-4B27-A946-3D146F03B25D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC81D9DF-5A5D-4855-BB32-5A236A97A630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC81D9DF-5A5D-4855-BB32-5A236A97A630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC81D9DF-5A5D-4855-BB32-5A236A97A630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC81D9DF-5A5D-4855-BB32-5A236A97A630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D762F8-2737-4D48-A99D-C965658C65BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D762F8-2737-4D48-A99D-C965658C65BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D762F8-2737-4D48-A99D-C965658C65BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D762F8-2737-4D48-A99D-C965658C65BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,5 +157,10 @@ Global
 		{86732D30-8307-49A6-B4C7-AE175F4EA789} = {F06E9FA6-48D3-4638-BBA4-5657A939AF94}
 		{8F3A81E5-9C18-44CD-9BF3-A718E151359B} = {9DFE5CEC-BBED-45AC-9931-19AA090B2C88}
 		{A7F76A8B-71B5-4E2C-A6F1-A91CA74F5D30} = {85719516-5C41-40C4-9F45-2BE8EC9F7A19}
+		{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307} = {8F3A81DD-EA26-40A8-B003-75CE7A2B7B77}
+		{C48CE289-5ABD-4B27-A946-3D146F03B25D} = {8F3A81DD-EA26-40A8-B003-75CE7A2B7B77}
+		{EAA45DFA-1736-421C-98C5-166B17B5D6F2} = {BAA4C447-B6B3-4526-A058-DB2317B5C3B5}
+		{CC81D9DF-5A5D-4855-BB32-5A236A97A630} = {EAA45DFA-1736-421C-98C5-166B17B5D6F2}
+		{A6D762F8-2737-4D48-A99D-C965658C65BA} = {E420804D-7DB4-4C7D-9BEA-31A379F48B19}
 	EndGlobalSection
 EndGlobal

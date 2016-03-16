@@ -11,7 +11,7 @@ namespace org.ahren.manager.api.services
     public interface IOficinaService
     {
 
-        TipoDocumentoResource oficina(String oficinaId);
+        //TipoDocumentoResource oficina(String oficinaId);
 
         [WebInvoke]
         [OperationContract]

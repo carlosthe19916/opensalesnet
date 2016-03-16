@@ -10,34 +10,7 @@ namespace org.ahren.manager.api.services
 {
     [ServiceContract]
     public interface IBovedaService
-    {
-
-        TipoDocumentoResource oficina(String oficinaId);
-
-        void create(OficinaRepresentation rep);
-
-        IList<OficinaRepresentation> search(String abreviatura,
-            String denominacion, String tipoPersona,
-            Boolean estado, String filterText,
-            Int32 firstResult, Int32 maxResults);
-
-        SearchResultsRepresentation<OficinaRepresentation> search(SearchCriteriaRepresentation criteria);
-
-
-        [OperationContract]
-        void AddProductDetail(string productName, string productDescription);
-
-        [OperationContract]
-        void UpdateProductDetail(int updateId, string productName, string productDescription);
-
-        [OperationContract]
-        void DeleteProductDetail(int id);
-
-        [OperationContract]
-        string EditProductDetail(int id);
-
-        [OperationContract]
-        string LoadAllProductDetail();
+    {       
 
     }
 }
