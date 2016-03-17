@@ -12,6 +12,12 @@ namespace org.ahren.manager.api.services.impl
             throw new NotImplementedException();
         }
 
+        public string[] GetBlogPosts()
+        {
+            String[] v = { "hola", "mundo" };
+            return v;
+        }
+
         public SearchResultsRepresentation<OficinaRepresentation> search(SearchCriteriaRepresentation criteria)
         {
             throw new NotImplementedException();

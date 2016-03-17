@@ -24,7 +24,10 @@ namespace org.ahren.manager.api.services
 
         [WebInvoke]
         [OperationContract]        
-        SearchResultsRepresentation<OficinaRepresentation> search(SearchCriteriaRepresentation criteria);            
+        SearchResultsRepresentation<OficinaRepresentation> search(SearchCriteriaRepresentation criteria);
 
+        [OperationContract]
+        [WebGet(UriTemplate = "/Posts")]
+        String[] GetBlogPosts();
     }
 }
