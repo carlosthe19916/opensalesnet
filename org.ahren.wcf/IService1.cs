@@ -6,12 +6,13 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace org.ahren.web
+namespace org.ahren.wcf
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IService1
     {
+
         [OperationContract]
         string GetData(int value);
 
@@ -20,16 +21,14 @@ namespace org.ahren.web
 
         // TODO: Add your service operations here
         [OperationContract]
-        [WebGet(UriTemplate = "/Posts1")]
-        String search();
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "/GetCharacterType/")]
+        List<String> GetCharacterType();
 
-        [OperationContract]
-        [WebGet(UriTemplate = "/Posts")]
-        String[] GetBlogPosts();
     }
 
+
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "org.ahren.web.ContractType".
     [DataContract]
     public class CompositeType
     {

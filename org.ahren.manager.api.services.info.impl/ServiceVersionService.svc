@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="org.ahren.manager.api.services.info.impl.ServiceVersionService" CodeBehind="ServiceVersionService.svc.cs" %>
