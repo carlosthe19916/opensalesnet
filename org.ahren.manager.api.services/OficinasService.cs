@@ -24,12 +24,10 @@ namespace org.ahren.manager.api.services.impl
         }
 
         public OficinaRepresentation create(OficinaRepresentation rep)
-        {
-            var scope = new TransactionScope();
-
+        {            
             try
             {
-                using (scope)
+                using (var scope = new TransactionScope())
                 {
                     IOficinaModel oficina = oficinaProvider.create(rep.denominacion, rep.ubigeo);
                     scope.Complete();
@@ -42,10 +40,10 @@ namespace org.ahren.manager.api.services.impl
             }
         }
 
-        public IList<OficinaRepresentation> search(String filterText, String denominacion, Int32 firstResult, Int32 maxResults)
+        public IList<OficinaRepresentation> search(String filterText, String denominacion, int firstResult, int maxResults)
         {
-            firstResult = (firstResult != null ? firstResult : -1);
-            maxResults = (maxResults != null ? maxResults : -1);
+            firstResult = (firstResult != 0 ? firstResult : -1);
+            maxResults = (maxResults != 0 ? maxResults : -1);
 
             IList<OficinaRepresentation> results = new List<OficinaRepresentation>();
             IList<IOficinaModel> models;

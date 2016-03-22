@@ -17,7 +17,7 @@ namespace org.ahren.manager.api.services
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/oficinas?filterText={filterText}&denominacion={denominacion}&firstResult={firstResult}&maxResults={maxResults}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        IList<OficinaRepresentation> search(String filterText, String denominacion, Int32 firstResult, Int32 maxResults);
+        IList<OficinaRepresentation> search(String filterText, String denominacion, int firstResult, int maxResults);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/oficinas/search", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]        
