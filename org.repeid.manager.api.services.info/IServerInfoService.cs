@@ -9,8 +9,7 @@ namespace org.repeid.manager.api.services.info
     public interface IServerInfoService
     {
         [OperationContract]
-        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json,
-             ResponseFormat = WebMessageFormat.Json, UriTemplate = "/serverinfo/")]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "/serverinfo/")]
         ServerInfoRepresentation getVersion();
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.ef.entities
 {
+    [Table("DETALLE_VENTA")]
     public class DetalleVentaEntity
     {
         public String id { get; set; }

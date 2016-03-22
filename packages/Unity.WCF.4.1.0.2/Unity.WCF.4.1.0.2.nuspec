@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Unity.WCF.4</id>
+    <version>1.0.2</version>
+    <title>Unity 4 FOR WCF</title>
+    <authors>gruan</authors>
+    <owners>gruan</owners>
+    <projectUrl>https://github.com/gruan01/Unity.WCF.4</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Unity 4.x For WCF</description>
+    <tags>Unity WCF</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Unity" version="4.0.1" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

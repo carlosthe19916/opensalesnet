@@ -30,18 +30,76 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Wcf">
+      <HintPath>..\packages\Unity.WCF.4.1.0.2\lib\net45\Unity.Wcf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="App_Start\WcfServiceFactory.cs" />
+    <Compile Include="unity\UnityConfig.cs" />
+    <Compile Include="unity\UnityInstanceProvider.cs" />
+    <Compile Include="unity\UnityServiceBehavior.cs" />
+    <Compile Include="unity\UnityServiceHost.cs" />
+    <Compile Include="unity\UnityServiceHostFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\org.ahren.manager.api.ef\org.ahren.api.ef.csproj">
+      <Project>{cc81d9df-5a5d-4855-bb32-5a236a97a630}</Project>
+      <Name>org.ahren.api.ef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.provider\org.ahren.api.model.provider.csproj">
+      <Project>{6f879d74-97e1-46f0-84bb-d05f81527c99}</Project>
+      <Name>org.ahren.api.model.provider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model\org.ahren.api.model.csproj">
+      <Project>{03bbaf99-4a9e-4e94-b7a9-d42035f9b235}</Project>
+      <Name>org.ahren.api.model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.services.info.impl\org.ahren.api.services.info.impl.csproj">
+      <Project>{c48ce289-5abd-4b27-a946-3d146f03b25d}</Project>
+      <Name>org.ahren.api.services.info.impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.services\org.ahren.api.services.impl.csproj">
+      <Project>{1fab1cff-3cd7-4cbe-903f-38f146a0f307}</Project>
+      <Name>org.ahren.api.services.impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.repeid.manager.api.services.info\org.ahren.api.services.info.csproj">
+      <Project>{ff04063e-1707-47c7-951d-655e5bf38dfd}</Project>
+      <Name>org.ahren.api.services.info</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.repeid.manager.api.services\org.ahren.api.services.csproj">
+      <Project>{1f2f3336-2ca0-438c-b903-d81fed8d4643}</Project>
+      <Name>org.ahren.api.services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

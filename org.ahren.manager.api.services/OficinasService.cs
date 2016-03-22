@@ -15,7 +15,7 @@ namespace org.ahren.manager.api.services.impl
     public class OficinasService : IOficinasService
     {
 
-        private IOficinaProvider oficinaProvider;
+        private IOficinaProvider oficinaProvider;  
 
         public OficinasService(IOficinaProvider oficinaProvider)
         {

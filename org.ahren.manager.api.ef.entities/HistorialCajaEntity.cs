@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.ef.entities
 {
+    [Table("HISTORIAL_CAJA")]
     public class HistorialCajaEntity
     {
         [Column("id")]

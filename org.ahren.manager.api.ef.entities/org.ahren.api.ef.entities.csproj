@@ -54,8 +54,7 @@
     <Compile Include="VentaEntity.cs" />
     <Compile Include="HistorialCajaEntity.cs" />
     <Compile Include="CajaEntity.cs" />
-    <Compile Include="Context.cs" />
-    <Compile Include="Initializer.cs" />
+    <Compile Include="OpensalesContext.cs" />
     <Compile Include="BovedaEntity.cs" />
     <Compile Include="OficinaEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

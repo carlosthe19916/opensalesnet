@@ -6,29 +6,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace org.ahren.manager.api.ef.entities
 {
     public class OficinaProvider : IOficinaProvider
     {
 
-        public OficinaModel create(string denominacion)
+        public OficinaModel create(string denominacion, String ubigeo)
         {
-            Context cc = new Context();
-            cc.
-            OficinaEntity entity = new OficinaEntity();
-            entity.denominacion = denominacion;
-            return new OficinaAdapter(entity);
+            using (var ctx = new OpensalesContext())
+            {
+                OficinaEntity entity = new OficinaEntity();
+                entity.denominacion = denominacion;
+                entity.ubigeo = ubigeo;
+
+                ctx.OficinasEntity.Add(entity);
+                ctx.SaveChanges();
+
+                return new OficinaAdapter(entity);
+            }        
         }
 
         public OficinaModel findById(string oficinaId)
         {
-            throw new NotImplementedException();
+            using (var ctx = new OpensalesContext())
+            {
+                OficinaEntity entity = ctx.OficinasEntity.Find(oficinaId);
+                return new OficinaAdapter(entity);
+            }  
         }
 
         public void remove(OficinaModel oficina)
         {
-            throw new NotImplementedException();
+            using (var ctx = new OpensalesContext())
+            {
+                OficinaEntity entity = ctx.OficinasEntity.Find(oficina.getId());
+                ctx.OficinasEntity.Remove(entity);
+                ctx.SaveChanges();
+            }
         }
 
         public IList<OficinaModel> getAll()
