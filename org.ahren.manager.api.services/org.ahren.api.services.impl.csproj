@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>org.ahren.manager.api.services</RootNamespace>
+    <AssemblyName>org.ahren.manager.api.services</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OficinasService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\org.ahren.manager.api.beans.representation.search\org.ahren.api.beans.representations.search.csproj">
+      <Project>{e0638865-69c0-417b-a7d0-c23fd6722661}</Project>
+      <Name>org.ahren.api.beans.representations.search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.beans.representations.info\org.ahren.api.beans.representations.info.csproj">
+      <Project>{a7f76a8b-71b5-4e2c-a6f1-a91ca74f5d30}</Project>
+      <Name>org.ahren.api.beans.representations.info</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.beans.representations\org.ahren.api.beans.representations.csproj">
+      <Project>{9fb7011b-c258-43e9-9064-24af25fe2b57}</Project>
+      <Name>org.ahren.api.beans.representations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.exceptions\org.ahren.api.model.exceptions.csproj">
+      <Project>{c0502713-97e2-43af-b5c9-17df7e53a2b9}</Project>
+      <Name>org.ahren.api.model.exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.provider\org.ahren.api.model.provider.csproj">
+      <Project>{6f879d74-97e1-46f0-84bb-d05f81527c99}</Project>
+      <Name>org.ahren.api.model.provider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.search\org.ahren.api.model.search.csproj">
+      <Project>{aac28ba1-9a0c-491a-b36c-99abeaaa6a3b}</Project>
+      <Name>org.ahren.api.model.search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.utils\org.ahren.api.model.utils.csproj">
+      <Project>{960620f4-d137-4e75-a29a-20d6fa0b5043}</Project>
+      <Name>org.ahren.api.model.utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model\org.ahren.api.model.csproj">
+      <Project>{03bbaf99-4a9e-4e94-b7a9-d42035f9b235}</Project>
+      <Name>org.ahren.api.model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.repeid.manager.api.services\org.ahren.api.services.csproj">
+      <Project>{1f2f3336-2ca0-438c-b903-d81fed8d4643}</Project>
+      <Name>org.ahren.api.services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

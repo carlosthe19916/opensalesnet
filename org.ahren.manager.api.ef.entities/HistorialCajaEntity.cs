@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.ef.entities
 {
-    class HistorialCajaEntity
+    public class HistorialCajaEntity
     {
         [Column("id")]
         public String id { get; set; }
@@ -16,7 +16,7 @@ namespace org.ahren.manager.api.ef.entities
         public DateTime fechaApertura { get; set; }
 
         [Column("fecha_cierre")]
-        public DateTime fecha_cierre { get; set; }
+        public DateTime fechaCierre { get; set; }
 
         [Column("estado")]
         public bool estado { get; set; }

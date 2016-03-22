@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.ef.entities
 {
-    class VentaEntity
+    public class VentaEntity
     {
         public String id { get; set; }
 

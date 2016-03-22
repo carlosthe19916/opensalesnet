@@ -10,7 +10,8 @@ namespace org.ahren.manager.api.model
 {
     public interface OficinaModel : Model
     {
-        void getId();
+
+        String getId();
 
         String getDenominacion();
 
@@ -18,7 +19,8 @@ namespace org.ahren.manager.api.model
 
         ISet<CajaModel> getCajas();
 
-        ISet<BovedaModel> getBovedas();        
+        ISet<BovedaModel> getBovedas();
+
     }
 
 }

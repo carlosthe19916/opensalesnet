@@ -9,6 +9,7 @@ namespace org.ahren.manager.api.ef.entities
         {
 
         }
+
         DbSet<OficinaEntity> oficinaEntity { get; set; }
 
         DbSet<BovedaEntity> bovedaEntity { get; set; }

@@ -13,15 +13,15 @@ namespace org.ahren.manager.api.services
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/oficinas")]
-        void create(OficinaRepresentation rep);
+        OficinaRepresentation create(OficinaRepresentation rep);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/oficinas")]
-        IList<OficinaRepresentation> search(String denominacion, String filterText, Int32 firstResult, Int32 maxResults);
+        [WebInvoke(Method = "GET", UriTemplate = "/oficinas?filterText={filterText}&denominacion={denominacion}&firstResult={firstResult}&maxResults={maxResults}")]
+        IList<OficinaRepresentation> search(String filterText, String denominacion, Int32 firstResult, Int32 maxResults);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/oficinas/search")]
-        SearchResultsRepresentation<OficinaRepresentation> search(SearchCriteriaRepresentation criteria);
+        SearchResultsRepresentation<OficinaRepresentation> searchCriteria(SearchCriteriaRepresentation criteria);
 
     }
 }

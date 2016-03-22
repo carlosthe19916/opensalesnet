@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.beans.representations
 {
@@ -14,13 +18,6 @@ namespace org.ahren.manager.api.beans.representations
 
         [DataMember]
         public String abierto { get; set; }
-
-        [DataMember]
-        public OficinaRepresentation oficina { get; set; }
-
-        public CajaRepresentation()
-        {
-
-        }
+         
     }
 }

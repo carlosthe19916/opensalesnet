@@ -5,25 +5,21 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{F06E9FA6-48D3-4638-BBA4-5657A939AF94}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "manager", "manager", "{1FFE6458-9A18-4D44-A1BF-4573962FE193}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testsuite", "testsuite", "{9DFE5CEC-BBED-45AC-9931-19AA090B2C88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "model", "model", "{99B395EA-4FA5-45E3-90CD-E7852E4A9B69}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{BAA4C447-B6B3-4526-A058-DB2317B5C3B5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ui", "ui", "{DE6280DF-3C3E-45D2-9ACE-B19E1B1413F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.model", "org.ahren.manager.api.model\org.ahren.api.model.csproj", "{03BBAF99-4A9E-4E94-B7A9-D42035F9B235}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.model", "org.ahren.manager.api.model\org.ahren.manager.api.model.csproj", "{03BBAF99-4A9E-4E94-B7A9-D42035F9B235}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.model.exceptions", "org.ahren.manager.api.model.exceptions\org.ahren.api.model.exceptions.csproj", "{C0502713-97E2-43AF-B5C9-17DF7E53A2B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.model.exceptions", "org.ahren.manager.api.model.exceptions\org.ahren.manager.api.model.exceptions.csproj", "{C0502713-97E2-43AF-B5C9-17DF7E53A2B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.model.provider", "org.ahren.manager.api.model.provider\org.ahren.api.model.provider.csproj", "{6F879D74-97E1-46F0-84BB-D05F81527C99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.model.provider", "org.ahren.manager.api.model.provider\org.ahren.manager.api.model.provider.csproj", "{6F879D74-97E1-46F0-84BB-D05F81527C99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.model.search", "org.ahren.manager.api.model.search\org.ahren.api.model.search.csproj", "{AAC28BA1-9A0C-491A-B36C-99ABEAAA6A3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.model.search", "org.ahren.manager.api.model.search\org.ahren.manager.api.model.search.csproj", "{AAC28BA1-9A0C-491A-B36C-99ABEAAA6A3B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.model.utils", "org.ahren.manager.api.model.utils\org.ahren.manager.api.model.utils.csproj", "{960620F4-D137-4E75-A29A-20D6FA0B5043}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.model.utils", "org.ahren.manager.api.model.utils\org.ahren.api.model.utils.csproj", "{960620F4-D137-4E75-A29A-20D6FA0B5043}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{C16BA297-18D1-481F-A315-ACC6398E10F3}"
 EndProject
@@ -31,13 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services-impl", "services-i
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "beans", "beans", "{85719516-5C41-40C4-9F45-2BE8EC9F7A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.services", "org.repeid.manager.api.services\org.ahren.manager.api.services.csproj", "{1F2F3336-2CA0-438C-B903-D81FED8D4643}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.services", "org.repeid.manager.api.services\org.ahren.api.services.csproj", "{1F2F3336-2CA0-438C-B903-D81FED8D4643}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.services.info", "org.repeid.manager.api.services.info\org.ahren.manager.api.services.info.csproj", "{FF04063E-1707-47C7-951D-655E5BF38DFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.services.info", "org.repeid.manager.api.services.info\org.ahren.api.services.info.csproj", "{FF04063E-1707-47C7-951D-655E5BF38DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.beans.representations", "org.ahren.manager.api.beans.representations\org.ahren.manager.api.beans.representations.csproj", "{9FB7011B-C258-43E9-9064-24AF25FE2B57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.beans.representations", "org.ahren.manager.api.beans.representations\org.ahren.api.beans.representations.csproj", "{9FB7011B-C258-43E9-9064-24AF25FE2B57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.beans.representations.search", "org.ahren.manager.api.beans.representation.search\org.ahren.manager.api.beans.representations.search.csproj", "{E0638865-69C0-417B-A7D0-C23FD6722661}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.beans.representations.search", "org.ahren.manager.api.beans.representation.search\org.ahren.api.beans.representations.search.csproj", "{E0638865-69C0-417B-A7D0-C23FD6722661}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.common.util", "org.ahren.common.util\org.ahren.common.util.csproj", "{FDF62917-D41E-4371-9095-4F71FEC8F90F}"
 EndProject
@@ -45,19 +41,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.common.config", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.common.testsuite", "org.ahren.common.testsuite\org.ahren.common.testsuite.csproj", "{8F3A81E5-9C18-44CD-9BF3-A718E151359B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.beans.representations.info", "org.ahren.manager.api.beans.representations.info\org.ahren.manager.api.beans.representations.info.csproj", "{A7F76A8B-71B5-4E2C-A6F1-A91CA74F5D30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.beans.representations.info", "org.ahren.manager.api.beans.representations.info\org.ahren.api.beans.representations.info.csproj", "{A7F76A8B-71B5-4E2C-A6F1-A91CA74F5D30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.services.impl", "org.ahren.manager.api.services\org.ahren.manager.api.services.impl.csproj", "{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.services.impl", "org.ahren.manager.api.services\org.ahren.api.services.impl.csproj", "{1FAB1CFF-3CD7-4CBE-903F-38F146A0F307}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.services.info.impl", "org.ahren.manager.api.services.info.impl\org.ahren.manager.api.services.info.impl.csproj", "{C48CE289-5ABD-4B27-A946-3D146F03B25D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.services.info.impl", "org.ahren.manager.api.services.info.impl\org.ahren.api.services.info.impl.csproj", "{C48CE289-5ABD-4B27-A946-3D146F03B25D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ef", "ef", "{EAA45DFA-1736-421C-98C5-166B17B5D6F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.ef", "org.ahren.manager.api.ef\org.ahren.manager.api.ef.csproj", "{CC81D9DF-5A5D-4855-BB32-5A236A97A630}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.ef", "org.ahren.manager.api.ef\org.ahren.api.ef.csproj", "{CC81D9DF-5A5D-4855-BB32-5A236A97A630}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{B9E4D3BA-13A5-4C4A-A9ED-48BA83A3D951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.manager.api.ef.entities", "org.ahren.manager.api.ef.entities\org.ahren.manager.api.ef.entities.csproj", "{2E7D907A-BDAE-4BE4-AAD6-CB74CEAEB84F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.api.ef.entities", "org.ahren.manager.api.ef.entities\org.ahren.api.ef.entities.csproj", "{2E7D907A-BDAE-4BE4-AAD6-CB74CEAEB84F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.ahren.wcf", "org.ahren.wcf\org.ahren.wcf.csproj", "{6CB4E065-F3F2-4834-B584-DF4E4BF19ACC}"
 EndProject
@@ -145,8 +141,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{99B395EA-4FA5-45E3-90CD-E7852E4A9B69} = {BAA4C447-B6B3-4526-A058-DB2317B5C3B5}
-		{BAA4C447-B6B3-4526-A058-DB2317B5C3B5} = {1FFE6458-9A18-4D44-A1BF-4573962FE193}
-		{DE6280DF-3C3E-45D2-9ACE-B19E1B1413F1} = {1FFE6458-9A18-4D44-A1BF-4573962FE193}
 		{03BBAF99-4A9E-4E94-B7A9-D42035F9B235} = {99B395EA-4FA5-45E3-90CD-E7852E4A9B69}
 		{C0502713-97E2-43AF-B5C9-17DF7E53A2B9} = {99B395EA-4FA5-45E3-90CD-E7852E4A9B69}
 		{6F879D74-97E1-46F0-84BB-D05F81527C99} = {99B395EA-4FA5-45E3-90CD-E7852E4A9B69}
