@@ -1,7 +1,7 @@
 
 namespace org.ahren.manager.api.model
 {
-    public interface Model
+    public interface IModel
     {
 
     }

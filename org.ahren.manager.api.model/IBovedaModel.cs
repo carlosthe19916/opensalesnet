@@ -7,7 +7,7 @@ using System.Web;
 
 namespace org.ahren.manager.api.model
 {
-    public interface BovedaModel : Model
+    public interface IBovedaModel : IModel
     {
         String getId();
 

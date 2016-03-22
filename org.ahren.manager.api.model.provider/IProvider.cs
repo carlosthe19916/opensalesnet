@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.model.provider
 {
-    public interface Provider
+    public interface IProvider
     {
         void close();
     }

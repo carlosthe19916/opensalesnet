@@ -4,20 +4,22 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Collections.Generic;
 
 namespace org.ahren.manager.api.model
 {
-    public interface CajaModel : Model
+    public interface IOficinaModel : IModel
     {
+
         String getId();
 
         String getDenominacion();
 
-        void setDenominacion(String denominacion);
+        String getUbigeo();
 
-        bool isAbierto();
+        ISet<ICajaModel> getCajas();
 
-        void setAbierto();
+        ISet<IBovedaModel> getBovedas();
 
     }
 

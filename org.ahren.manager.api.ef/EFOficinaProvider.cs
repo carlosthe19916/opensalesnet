@@ -13,7 +13,7 @@ namespace org.ahren.manager.api.ef.entities
     public class OficinaProvider : IOficinaProvider
     {
 
-        public OficinaModel create(string denominacion, String ubigeo)
+        public IOficinaModel create(string denominacion, String ubigeo)
         {
             using (var ctx = new OpensalesContext())
             {
@@ -28,7 +28,7 @@ namespace org.ahren.manager.api.ef.entities
             }        
         }
 
-        public OficinaModel findById(string oficinaId)
+        public IOficinaModel findById(string oficinaId)
         {
             using (var ctx = new OpensalesContext())
             {
@@ -37,7 +37,7 @@ namespace org.ahren.manager.api.ef.entities
             }  
         }
 
-        public void remove(OficinaModel oficina)
+        public void remove(IOficinaModel oficina)
         {
             using (var ctx = new OpensalesContext())
             {
@@ -47,42 +47,42 @@ namespace org.ahren.manager.api.ef.entities
             }
         }
 
-        public IList<OficinaModel> getAll()
+        public IList<IOficinaModel> getAll()
         {
             throw new NotImplementedException();
         }
 
-        public IList<OficinaModel> getAll(int firstResult, int maxResults)
+        public IList<IOficinaModel> getAll(int firstResult, int maxResults)
         {
             throw new NotImplementedException();
         }
 
-        public IList<OficinaModel> search(string filterText)
+        public IList<IOficinaModel> search(string filterText)
         {
             throw new NotImplementedException();
         }
 
-        public IList<OficinaModel> search(string filterText, int firstResult, int maxResults)
+        public IList<IOficinaModel> search(string filterText, int firstResult, int maxResults)
         {
             throw new NotImplementedException();
         }
 
-        public IList<OficinaModel> searchByAttributes(IDictionary<string, object> attributes)
+        public IList<IOficinaModel> searchByAttributes(IDictionary<string, object> attributes)
         {
             throw new NotImplementedException();
         }
 
-        public IList<OficinaModel> searchByAttributes(IDictionary<string, object> attributes, int firstResult, int maxResults)
+        public IList<IOficinaModel> searchByAttributes(IDictionary<string, object> attributes, int firstResult, int maxResults)
         {
             throw new NotImplementedException();
         }
 
-        public SearchResultsModel<OficinaModel> search(SearchCriteriaModel criteria)
+        public SearchResultsModel<IOficinaModel> search(SearchCriteriaModel criteria)
         {
             throw new NotImplementedException();
         }
 
-        public SearchResultsModel<OficinaModel> search(SearchCriteriaModel criteria, string filterText)
+        public SearchResultsModel<IOficinaModel> search(SearchCriteriaModel criteria, string filterText)
         {
             throw new NotImplementedException();
         }

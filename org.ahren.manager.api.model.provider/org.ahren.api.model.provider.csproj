@@ -43,7 +43,7 @@
     <Compile Include="ICajaProvider.cs" />
     <Compile Include="IBovedaProvider.cs" />
     <Compile Include="IOficinaProvider.cs" />
-    <Compile Include="Provider.cs" />
+    <Compile Include="IProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

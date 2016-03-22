@@ -14,29 +14,29 @@ namespace org.ahren.manager.api.model.provider
         public static String DENOMINACION = "denominacion";
     }
 
-    public interface IOficinaProvider : Provider
+    public interface IOficinaProvider : IProvider
     {
-        OficinaModel create(String denominacion, String ubigeo);
+        IOficinaModel create(String denominacion, String ubigeo);
 
-        OficinaModel findById(String oficinaId);
+        IOficinaModel findById(String oficinaId);
 
-        void remove(OficinaModel oficina);
+        void remove(IOficinaModel oficina);
 
-        IList<OficinaModel> getAll();
+        IList<IOficinaModel> getAll();
 
-        IList<OficinaModel> getAll(int firstResult, int maxResults);
+        IList<IOficinaModel> getAll(int firstResult, int maxResults);
 
-        IList<OficinaModel> search(String filterText);
+        IList<IOficinaModel> search(String filterText);
 
-        IList<OficinaModel> search(String filterText, int firstResult, int maxResults);
+        IList<IOficinaModel> search(String filterText, int firstResult, int maxResults);
 
-        IList<OficinaModel> searchByAttributes(IDictionary<String, Object> attributes);
+        IList<IOficinaModel> searchByAttributes(IDictionary<String, Object> attributes);
 
-        IList<OficinaModel> searchByAttributes(IDictionary<String, Object> attributes, int firstResult, int maxResults);
+        IList<IOficinaModel> searchByAttributes(IDictionary<String, Object> attributes, int firstResult, int maxResults);
 
-        SearchResultsModel<OficinaModel> search(SearchCriteriaModel criteria);
+        SearchResultsModel<IOficinaModel> search(SearchCriteriaModel criteria);
 
-        SearchResultsModel<OficinaModel> search(SearchCriteriaModel criteria, String filterText);
+        SearchResultsModel<IOficinaModel> search(SearchCriteriaModel criteria, String filterText);
     }
 
 }

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace org.ahren.manager.api.model
 {
-    public interface HistorialCajaModel : Model
+    public interface IHistorialCajaModel : IModel
     {
         String getId();
 

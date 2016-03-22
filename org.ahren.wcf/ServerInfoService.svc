@@ -1,1 +1,1 @@
-﻿<% @ServiceHost Service="org.ahren.manager.api.services.info.impl.ServerInfoService" %>
+﻿<% @ServiceHost Service="org.ahren.manager.api.services.info.impl.ServerInfoService" Factory="org.ahren.common.config.unity.UnityServiceHostFactory"%>

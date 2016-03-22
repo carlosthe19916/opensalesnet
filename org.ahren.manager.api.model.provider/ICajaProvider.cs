@@ -10,29 +10,29 @@ using org.ahren.manager.api.model.search;
 
 namespace org.ahren.manager.api.model.provider
 {
-    public interface ICajaProvider : Provider
+    public interface ICajaProvider : IProvider
     {
-        CajaModel create(String denominacion);
+        ICajaModel create(String denominacion);
 
-        CajaModel findById(String cajaId);
+        ICajaModel findById(String cajaId);
 
-        void remove(CajaModel caja);
+        void remove(ICajaModel caja);
 
-        List<CajaModel> getAll(OficinaModel oficina);
+        List<ICajaModel> getAll(IOficinaModel oficina);
 
-        List<CajaModel> getAll(OficinaModel oficina, int firstResult, int maxResults);
+        List<ICajaModel> getAll(IOficinaModel oficina, int firstResult, int maxResults);
 
-        List<CajaModel> search(OficinaModel oficina, String filterText);
+        List<ICajaModel> search(IOficinaModel oficina, String filterText);
 
-        List<CajaModel> search(OficinaModel oficina, String filterText, int firstResult, int maxResults);
+        List<ICajaModel> search(IOficinaModel oficina, String filterText, int firstResult, int maxResults);
 
-        List<CajaModel> searchByAttributes(OficinaModel oficina, Dictionary<String, String> attributes);
+        List<ICajaModel> searchByAttributes(IOficinaModel oficina, Dictionary<String, String> attributes);
 
-        List<CajaModel> searchByAttributes(OficinaModel oficina, Dictionary<String, String> attributes, int firstResult, int maxResults);
+        List<ICajaModel> searchByAttributes(IOficinaModel oficina, Dictionary<String, String> attributes, int firstResult, int maxResults);
 
-        SearchResultsModel<CajaModel> search(OficinaModel oficina, SearchCriteriaModel criteria);
+        SearchResultsModel<ICajaModel> search(IOficinaModel oficina, SearchCriteriaModel criteria);
 
-        SearchResultsModel<CajaModel> search(OficinaModel oficina, SearchCriteriaModel criteria, String filterText);
+        SearchResultsModel<ICajaModel> search(IOficinaModel oficina, SearchCriteriaModel criteria, String filterText);
     }
 
 }

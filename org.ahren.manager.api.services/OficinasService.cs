@@ -8,6 +8,7 @@ using org.ahren.manager.api.model.provider;
 using org.ahren.manager.api.model.exceptions;
 using org.ahren.manager.api.model.utils;
 using org.ahren.manager.api.model.search;
+using System.Transactions;
 
 namespace org.ahren.manager.api.services.impl
 {
@@ -24,10 +25,16 @@ namespace org.ahren.manager.api.services.impl
 
         public OficinaRepresentation create(OficinaRepresentation rep)
         {
+            var scope = new TransactionScope();
+
             try
             {
-                OficinaModel oficina = oficinaProvider.create(rep.denominacion, rep.ubigeo);
-                return ModelToRepresentation.toRepresentation(oficina);
+                using (scope)
+                {
+                    IOficinaModel oficina = oficinaProvider.create(rep.denominacion, rep.ubigeo);
+                    scope.Complete();
+                    return ModelToRepresentation.toRepresentation(oficina);                    
+                }                                
             }
             catch (ModelDuplicateException e)
             {
@@ -41,7 +48,7 @@ namespace org.ahren.manager.api.services.impl
             maxResults = (maxResults != null ? maxResults : -1);
 
             IList<OficinaRepresentation> results = new List<OficinaRepresentation>();
-            IList<OficinaModel> models;
+            IList<IOficinaModel> models;
             if (filterText != null)
             {
                 models = oficinaProvider.search(filterText.Trim(), firstResult, maxResults);
@@ -97,7 +104,7 @@ namespace org.ahren.manager.api.services.impl
             String filterText = criteria.filterText;
 
             // search
-            SearchResultsModel<OficinaModel> results = null;
+            SearchResultsModel<IOficinaModel> results = null;
             if (filterText == null)
             {
                 results = oficinaProvider.search(criteriaModel);

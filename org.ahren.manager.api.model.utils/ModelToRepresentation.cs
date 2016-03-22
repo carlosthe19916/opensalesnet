@@ -9,7 +9,7 @@ namespace org.ahren.manager.api.model.utils
 {
     public class ModelToRepresentation
     {
-        public static OficinaRepresentation toRepresentation(OficinaModel model)
+        public static OficinaRepresentation toRepresentation(IOficinaModel model)
         {
             if (model == null)
                 return null;

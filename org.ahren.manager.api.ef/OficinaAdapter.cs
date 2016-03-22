@@ -7,61 +7,36 @@ using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.ef.entities
 {
-    public class OficinaAdapter : OficinaModel
+    public class OficinaAdapter : IOficinaModel
     {
         private OficinaEntity oficinaEntity;
 
         public OficinaAdapter(OficinaEntity oficinaEntity)
         {
             this.oficinaEntity = oficinaEntity;
-        }
+        }                
 
-        String getId()
+        string IOficinaModel.getId()
         {
             return oficinaEntity.id;
         }
 
-        String getDenominacion()
+        string IOficinaModel.getDenominacion()
         {
             return oficinaEntity.denominacion;
         }
 
-        String getUbigeo()
+        string IOficinaModel.getUbigeo()
         {
             return oficinaEntity.ubigeo;
         }
 
-        ISet<CajaModel> getCajas()
-        {
-            return null;
-        }
-
-        ISet<BovedaModel> getBovedas()
-        {
-            return null;
-        }
-
-        string OficinaModel.getId()
+        ISet<ICajaModel> IOficinaModel.getCajas()
         {
             throw new NotImplementedException();
         }
 
-        string OficinaModel.getDenominacion()
-        {
-            throw new NotImplementedException();
-        }
-
-        string OficinaModel.getUbigeo()
-        {
-            throw new NotImplementedException();
-        }
-
-        ISet<CajaModel> OficinaModel.getCajas()
-        {
-            throw new NotImplementedException();
-        }
-
-        ISet<BovedaModel> OficinaModel.getBovedas()
+        ISet<IBovedaModel> IOficinaModel.getBovedas()
         {
             throw new NotImplementedException();
         }

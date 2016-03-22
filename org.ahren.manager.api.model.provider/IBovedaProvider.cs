@@ -10,29 +10,29 @@ using org.ahren.manager.api.model.search;
 
 namespace org.ahren.manager.api.model.provider
 {
-    public interface IBovedaProvider : Provider
+    public interface IBovedaProvider : IProvider
     {
-        BovedaModel create(String denominacion);
+        IBovedaModel create(String denominacion);
 
-        BovedaModel findById(String bovedaId);
+        IBovedaModel findById(String bovedaId);
 
-        void remove(BovedaModel boveda);
+        void remove(IBovedaModel boveda);
 
-        List<BovedaModel> getAll(OficinaModel oficina);
+        List<IBovedaModel> getAll(IOficinaModel oficina);
 
-        List<BovedaModel> getAll(OficinaModel oficina, int firstResult, int maxResults);
+        List<IBovedaModel> getAll(IOficinaModel oficina, int firstResult, int maxResults);
 
-        List<BovedaModel> search(OficinaModel oficina, String filterText);
+        List<IBovedaModel> search(IOficinaModel oficina, String filterText);
 
-        List<BovedaModel> search(OficinaModel oficina, String filterText, int firstResult, int maxResults);
+        List<IBovedaModel> search(IOficinaModel oficina, String filterText, int firstResult, int maxResults);
 
-        List<BovedaModel> searchByAttributes(OficinaModel oficina, Dictionary<String, String> attributes);
+        List<IBovedaModel> searchByAttributes(IOficinaModel oficina, Dictionary<String, String> attributes);
 
-        List<BovedaModel> searchByAttributes(OficinaModel oficina, Dictionary<String, String> attributes, int firstResult, int maxResults);
+        List<IBovedaModel> searchByAttributes(IOficinaModel oficina, Dictionary<String, String> attributes, int firstResult, int maxResults);
 
-        SearchResultsModel<BovedaModel> search(OficinaModel oficina, SearchCriteriaModel criteria);
+        SearchResultsModel<IBovedaModel> search(IOficinaModel oficina, SearchCriteriaModel criteria);
 
-        SearchResultsModel<BovedaModel> search(OficinaModel oficina, SearchCriteriaModel criteria, String filterText);
+        SearchResultsModel<IBovedaModel> search(IOficinaModel oficina, SearchCriteriaModel criteria, String filterText);
     }
 
 }
