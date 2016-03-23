@@ -139,6 +139,54 @@
       <Project>{86732d30-8307-49a6-b4c7-ae175f4ea789}</Project>
       <Name>org.ahren.common.config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\org.ahren.common.testsuite\org.ahren.testsuite.csproj">
+      <Project>{8f3a81e5-9c18-44cd-9bf3-a718e151359b}</Project>
+      <Name>org.ahren.testsuite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.common.util\org.ahren.common.util.csproj">
+      <Project>{fdf62917-d41e-4371-9095-4f71fec8f90f}</Project>
+      <Name>org.ahren.common.util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.beans.representation.search\org.ahren.api.beans.representations.search.csproj">
+      <Project>{e0638865-69c0-417b-a7d0-c23fd6722661}</Project>
+      <Name>org.ahren.api.beans.representations.search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.beans.representations.info\org.ahren.api.beans.representations.info.csproj">
+      <Project>{a7f76a8b-71b5-4e2c-a6f1-a91ca74f5d30}</Project>
+      <Name>org.ahren.api.beans.representations.info</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.beans.representations\org.ahren.api.beans.representations.csproj">
+      <Project>{9fb7011b-c258-43e9-9064-24af25fe2b57}</Project>
+      <Name>org.ahren.api.beans.representations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.ef.entities\org.ahren.api.ef.entities.csproj">
+      <Project>{2e7d907a-bdae-4be4-aad6-cb74ceaeb84f}</Project>
+      <Name>org.ahren.api.ef.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.ef\org.ahren.api.ef.csproj">
+      <Project>{cc81d9df-5a5d-4855-bb32-5a236a97a630}</Project>
+      <Name>org.ahren.api.ef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.exceptions\org.ahren.api.model.exceptions.csproj">
+      <Project>{c0502713-97e2-43af-b5c9-17df7e53a2b9}</Project>
+      <Name>org.ahren.api.model.exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.provider\org.ahren.api.model.provider.csproj">
+      <Project>{6f879d74-97e1-46f0-84bb-d05f81527c99}</Project>
+      <Name>org.ahren.api.model.provider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.search\org.ahren.api.model.search.csproj">
+      <Project>{aac28ba1-9a0c-491a-b36c-99abeaaa6a3b}</Project>
+      <Name>org.ahren.api.model.search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model.utils\org.ahren.api.model.utils.csproj">
+      <Project>{960620f4-d137-4e75-a29a-20d6fa0b5043}</Project>
+      <Name>org.ahren.api.model.utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\org.ahren.manager.api.model\org.ahren.api.model.csproj">
+      <Project>{03bbaf99-4a9e-4e94-b7a9-d42035f9b235}</Project>
+      <Name>org.ahren.api.model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\org.ahren.manager.api.services.info.impl\org.ahren.api.services.info.impl.csproj">
       <Project>{c48ce289-5abd-4b27-a946-3d146f03b25d}</Project>
       <Name>org.ahren.api.services.info.impl</Name>
