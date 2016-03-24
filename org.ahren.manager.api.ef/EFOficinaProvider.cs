@@ -49,17 +49,33 @@ namespace org.ahren.manager.api.ef.entities
 
         public IList<IOficinaModel> getAll()
         {
-            throw new NotImplementedException();
+            return getAll(-1, -1);
         }
 
         public IList<IOficinaModel> getAll(int firstResult, int maxResults)
         {
-            throw new NotImplementedException();
+            IQueryable<OficinaEntity> sequence = Context.Set<OficinaEntity>();
+            if (firstResult != 1)
+            {
+                sequence.Skip(firstResult);            
+            }
+            if (maxResults != -1)
+            {
+                sequence.Take(maxResults + 1);
+            }
+            IList<OficinaEntity> entities = sequence.ToList();
+            IList<IOficinaModel> result = new List<IOficinaModel>();
+            foreach (var entity in entities)
+            {
+                result.Add(new OficinaAdapter(entity));
+            }
+
+            return result;
         }
 
         public IList<IOficinaModel> search(string filterText)
         {
-            throw new NotImplementedException();
+            return search(filterText, -1, -1);
         }
 
         public IList<IOficinaModel> search(string filterText, int firstResult, int maxResults)

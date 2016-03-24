@@ -41,6 +41,7 @@ namespace org.ahren.manager.api.ef
 
             applySearchCriteriaToQuery(criteria, sequence, false);
 
+            // paging
             sequence.Skip(start);
             sequence.Take(pageSize + 1);
             bool hasMore = false;
@@ -69,12 +70,78 @@ namespace org.ahren.manager.api.ef
             return results;
         }
 
+        protected SearchResultsModel<T> findFullText(SearchCriteriaModel criteria, String filterText, String[] field) {
+		    SearchResultsModel<T> results = new SearchResultsModel<T>();
+            IQueryable<T> sequence = Context.Set<T>();
+
+		    // Set some default in the case that paging information was not
+            // included in the request.
+            PagingModel paging = criteria.paging;
+            if (paging == null)
+            {
+                paging = new PagingModel();
+                paging.page = 1;
+                paging.pageSize = 20;
+            }
+            int page = paging.page;
+            int pageSize = paging.pageSize;
+            int start = (page - 1) * pageSize;
+
+		    applySearchCriteriaToQuery(criteria, sequence, false);
+
+		    // filter text
+		    foreach (var fieldName in field) {
+                /*ParameterExpression parameter = Expression.Parameter(typeof(T));
+                MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(fieldName));
+                ConstantExpression Right = Expression.Constant(filterText, typeof(String));
+                BinaryExpression expression = Expression.Equal(Left, Right);
+                Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);*/
+
+			    //Criterion criterion = Restrictions.ilike(fieldName, filterText, MatchMode.ANYWHERE);
+			    //disjuntions.add(criterion);
+		    }
+		    //criteriaQuery.add(Restrictions.or(disjuntions.toArray(new Criterion[disjuntions.size()])));
+
+		    // paging
+            sequence.Skip(start);
+            sequence.Take(pageSize + 1);
+            bool hasMore = false;
+
+		    // Now query for the actual results
+            List<T> resultList = sequence.ToList();
+
+            // Check if we got back more than we actually needed.
+            if (resultList.Count > pageSize)
+            {
+                resultList.RemoveAt(resultList.Count - 1);
+                hasMore = true;
+            }
+
+            // If there are more results than we needed, then we will need to do
+            // another
+            // query to determine how many rows there are in total
+            int totalSize = start + sequence.Count();
+            if (hasMore)
+            {
+                totalSize = executeCountQuery(criteria, Context.Set<T>(), filterText, field);
+            }
+            results.totalSize = totalSize;
+            results.models = resultList;
+
+		return results;
+	}
+
         protected int executeCountQuery(SearchCriteriaModel criteria, IQueryable<T> sequence)
         {
             applySearchCriteriaToQuery(criteria, sequence, true);
             return sequence.Count();
         }
 
+        protected int executeCountQuery(SearchCriteriaModel criteria, IQueryable<T> sequence, String filterText, String[] field)
+        {
+            applySearchCriteriaToQuery(criteria, sequence, true);
+            return sequence.Count();
+        }
 
         protected void applySearchCriteriaToQuery(SearchCriteriaModel criteria, IQueryable<T> sequence, bool countOnly) 
         {        
