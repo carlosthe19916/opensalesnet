@@ -1,176 +1,183 @@
-﻿using System;
+﻿using org.ahren.manager.api.ef.entities;
+using org.ahren.manager.api.model.search;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace org.ahren.manager.api.ef
 {
-    public abstract class EFAbstractStorage
+
+    public abstract class EFAbstractStorage<T> where T : class
     {
-        //protected abstract EntityManager getEntityManager();
 
-	   /* public Session getSession() 
+        protected OpensalesContext Context;
+
+        public EFAbstractStorage()
         {
-		    return getEntityManager().unwrap(Session.class);
-	    }*/
+            Context = new OpensalesContext();
+        }
 
-	    /*protected <T> SearchResultsModel<T> findFullText(SearchCriteriaModel criteria, Class<T> type, String filterText,
-			    String... field) {
+        protected SearchResultsModel<T> find(SearchCriteriaModel criteria)
+        {
+            SearchResultsModel<T> results = new SearchResultsModel<T>();
+            IQueryable<T> sequence = Context.Set<T>();
 
-		    SearchResultsModel<T> results = new SearchResultsModel<>();
-		    Session session = getSession();
+            // Set some default in the case that paging information was not
+            // included in the request.
+            PagingModel paging = criteria.paging;
+            if (paging == null)
+            {
+                paging = new PagingModel();
+                paging.page = 1;
+                paging.pageSize = 20;
+            }
+            int page = paging.page;
+            int pageSize = paging.pageSize;
+            int start = (page - 1) * pageSize;
 
-		    // Set some default in the case that paging information was not
-		    // included in the request.
-		    PagingModel paging = criteria.getPaging();
-		    if (paging == null) {
-			    paging = new PagingModel();
-			    paging.setPage(1);
-			    paging.setPageSize(20);
-		    }
-		    int page = paging.getPage();
-		    int pageSize = paging.getPageSize();
-		    int start = (page - 1) * pageSize;
+            applySearchCriteriaToQuery(criteria, sequence, false);
 
-		    Criteria criteriaQuery = session.createCriteria(type);
-		    applySearchCriteriaToQuery(criteria, type, criteriaQuery, false);
+            sequence.Skip(start);
+            sequence.Take(pageSize + 1);
+            bool hasMore = false;
 
-		    // filter text
-		    List<Criterion> disjuntions = new ArrayList<>();
-		    for (String fieldName : field) {
-			    Criterion criterion = Restrictions.ilike(fieldName, filterText, MatchMode.ANYWHERE);
-			    disjuntions.add(criterion);
-		    }
-		    criteriaQuery.add(Restrictions.or(disjuntions.toArray(new Criterion[disjuntions.size()])));
+            // Now query for the actual results
+            List<T> resultList = sequence.ToList();
 
-		    // paging
-		    criteriaQuery.setFirstResult(start);
-		    criteriaQuery.setMaxResults(pageSize + 1);
-		    boolean hasMore = false;
+            // Check if we got back more than we actually needed.
+            if (resultList.Count > pageSize)
+            {
+                resultList.RemoveAt(resultList.Count - 1);
+                hasMore = true;
+            }
 
-		    // Now query for the actual results
-		    @SuppressWarnings("unchecked")
-		    List<T> resultList = criteriaQuery.list();
+            // If there are more results than we needed, then we will need to do
+            // another
+            // query to determine how many rows there are in total
+            int totalSize = start + sequence.Count();
+            if (hasMore)
+            {
+                totalSize = executeCountQuery(criteria, Context.Set<T>());
+            }
+            results.totalSize = totalSize;
+            results.models = resultList;
 
-		    // Check if we got back more than we actually needed.
-		    if (resultList.size() > pageSize) {
-			    resultList.remove(resultList.size() - 1);
-			    hasMore = true;
-		    }
+            return results;
+        }
 
-		    // If there are more results than we needed, then we will need to do
-		    // another
-		    // query to determine how many rows there are in total
-		    int totalSize = start + resultList.size();
-		    if (hasMore) {
-			    totalSize = executeCountQuery(criteria, session, type, filterText, field);
-		    }
-		    results.setTotalSize(totalSize);
-		    results.setModels(resultList);
-		    return results;
-	    }*/
+        protected int executeCountQuery(SearchCriteriaModel criteria, IQueryable<T> sequence)
+        {
+            applySearchCriteriaToQuery(criteria, sequence, true);
+            return sequence.Count();
+        }
 
-	    /*protected <T> SearchResultsModel<T> find(SearchCriteriaModel criteria, Class<T> type) {
-		    SearchResultsModel<T> results = new SearchResultsModel<>();
-		    Session session = getSession();
 
-		    // Set some default in the case that paging information was not
-		    // included in the request.
-		    PagingModel paging = criteria.getPaging();
-		    if (paging == null) {
-			    paging = new PagingModel();
-			    paging.setPage(1);
-			    paging.setPageSize(20);
-		    }
-		    int page = paging.getPage();
-		    int pageSize = paging.getPageSize();
-		    int start = (page - 1) * pageSize;
-
-		    Criteria criteriaQuery = session.createCriteria(type);
-		    applySearchCriteriaToQuery(criteria, type, criteriaQuery, false);
-		    criteriaQuery.setFirstResult(start);
-		    criteriaQuery.setMaxResults(pageSize + 1);
-		    boolean hasMore = false;
-
-		    // Now query for the actual results
-		    @SuppressWarnings("unchecked")
-		    List<T> resultList = criteriaQuery.list();
-
-		    // Check if we got back more than we actually needed.
-		    if (resultList.size() > pageSize) {
-			    resultList.remove(resultList.size() - 1);
-			    hasMore = true;
-		    }
-
-		    // If there are more results than we needed, then we will need to do
-		    // another
-		    // query to determine how many rows there are in total
-		    int totalSize = start + resultList.size();
-		    if (hasMore) {
-			    totalSize = executeCountQuery(criteria, session, type);
-		    }
-		    results.setTotalSize(totalSize);
-		    results.setModels(resultList);
-		    return results;
-	    }*/
-
-	    /*protected <T> int executeCountQuery(SearchCriteriaModel criteria, Session session, Class<T> type) {
-		    Criteria criteriaQuery = session.createCriteria(type);
-		    applySearchCriteriaToQuery(criteria, type, criteriaQuery, true);
-		    criteriaQuery.setProjection(Projections.rowCount());
-		    return ((Long) criteriaQuery.uniqueResult()).intValue();
-	    }*/
-
-	    /*protected <T> int executeCountQuery(SearchCriteriaModel criteria, Session session, Class<T> type, String filterText,
-			    String... field) {
-		    Criteria criteriaQuery = session.createCriteria(type);
-		    applySearchCriteriaToQuery(criteria, type, criteriaQuery, true);
-		    List<Criterion> disjuntionsCount = new ArrayList<>();
-		    for (String fieldName : field) {
-			    Criterion criterion = Restrictions.ilike(fieldName, filterText, MatchMode.ANYWHERE);
-			    disjuntionsCount.add(criterion);
-		    }
-		    criteriaQuery.add(Restrictions.or(disjuntionsCount.toArray(new Criterion[disjuntionsCount.size()])));
-		    criteriaQuery.setProjection(Projections.rowCount());
-		    return ((Long) criteriaQuery.uniqueResult()).intValue();
-	    }*/
-
-	    /*protected <T> void applySearchCriteriaToQuery(SearchCriteriaModel criteria, Class<T> type, Criteria criteriaQuery,
-			    boolean countOnly) {
-		    List<SearchCriteriaFilterModel> filters = criteria.getFilters();
-		    if (filters != null && !filters.isEmpty()) {
-			    for (SearchCriteriaFilterModel filter : filters) {
-				    if (filter.getOperator() == SearchCriteriaFilterOperator.eq) {
-					    criteriaQuery.add(Restrictions.eq(filter.getName(), filter.getValue()));
-				    } else if (filter.getOperator() == SearchCriteriaFilterOperator.bool_eq) {
-					    criteriaQuery.add(Restrictions.eq(filter.getName(), filter.getValue()));
-				    } else if (filter.getOperator() == SearchCriteriaFilterOperator.gt) {
-					    criteriaQuery.add(Restrictions.gt(filter.getName(), filter.getValue()));
-				    } else if (filter.getOperator() == SearchCriteriaFilterOperator.gte) {
-					    criteriaQuery.add(Restrictions.ge(filter.getName(), filter.getValue()));
-				    } else if (filter.getOperator() == SearchCriteriaFilterOperator.lt) {
-					    criteriaQuery.add(Restrictions.lt(filter.getName(), filter.getValue()));
-				    } else if (filter.getOperator() == SearchCriteriaFilterOperator.lte) {
-					    criteriaQuery.add(Restrictions.le(filter.getName(), filter.getValue()));
-				    } else if (filter.getOperator() == SearchCriteriaFilterOperator.neq) {
-					    criteriaQuery.add(Restrictions.ne(filter.getName(), filter.getValue()));
-				    } else if (filter.getOperator() == SearchCriteriaFilterOperator.like) {
-					    criteriaQuery
-							    .add(Restrictions.like(filter.getName(), (String) filter.getValue(), MatchMode.ANYWHERE));
-				    }
-			    }
-		    }
-		    List<OrderByModel> orders = criteria.getOrders();
-		    if (orders != null && !orders.isEmpty() && !countOnly) {
-			    for (OrderByModel orderBy : orders) {
-				    if (orderBy.isAscending()) {
-					    criteriaQuery.addOrder(Order.asc(orderBy.getName()));
-				    } else {
-					    criteriaQuery.addOrder(Order.desc(orderBy.getName()));
-				    }
-			    }
-		    }
-	    }*/
+        protected void applySearchCriteriaToQuery(SearchCriteriaModel criteria, IQueryable<T> sequence, bool countOnly) 
+        {        
+            IList<SearchCriteriaFilterModel> filters = criteria.filters;
+            if (filters != null && filters.Count > 0) {
+                foreach (var filter in filters) 
+                {                                                                    
+                    if (filter.op == SearchCriteriaFilterOperator.eq) {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(filter.name));
+                        ConstantExpression Right = Expression.Constant(filter.value, typeof(Object));
+                        BinaryExpression expression = Expression.Equal(Left, Right);
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);                                             
+                        sequence = sequence.Where(lambda);               
+                    }
+                    else if (filter.op == SearchCriteriaFilterOperator.bool_eq)
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(filter.name));
+                        ConstantExpression Right = Expression.Constant(filter.value, typeof(Boolean));
+                        BinaryExpression expression = Expression.Equal(Left, Right);
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);
+                        sequence = sequence.Where(lambda);
+                    }
+                    else if (filter.op == SearchCriteriaFilterOperator.gt)
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(filter.name));
+                        ConstantExpression Right = Expression.Constant(filter.value, typeof(Object));
+                        BinaryExpression expression = Expression.GreaterThan(Left, Right);
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);
+                        sequence = sequence.Where(lambda);
+                    }
+                    else if (filter.op == SearchCriteriaFilterOperator.gte)
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(filter.name));
+                        ConstantExpression Right = Expression.Constant(filter.value, typeof(Object));
+                        BinaryExpression expression = Expression.GreaterThanOrEqual(Left, Right);
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);
+                        sequence = sequence.Where(lambda);
+                    }
+                    else if (filter.op == SearchCriteriaFilterOperator.lt)
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(filter.name));
+                        ConstantExpression Right = Expression.Constant(filter.value, typeof(Object));
+                        BinaryExpression expression = Expression.LessThan(Left, Right);
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);
+                        sequence = sequence.Where(lambda);
+                    }
+                    else if (filter.op == SearchCriteriaFilterOperator.lte)
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(filter.name));
+                        ConstantExpression Right = Expression.Constant(filter.value, typeof(Object));
+                        BinaryExpression expression = Expression.LessThanOrEqual(Left, Right);
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);
+                        sequence = sequence.Where(lambda);
+                    }
+                    else if (filter.op == SearchCriteriaFilterOperator.neq)
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        MemberExpression Left = Expression.MakeMemberAccess(parameter, typeof(T).GetProperty(filter.name));
+                        ConstantExpression Right = Expression.Constant(filter.value, typeof(Object));
+                        BinaryExpression expression = Expression.NotEqual(Left, Right);
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(expression, parameter);
+                        sequence = sequence.Where(lambda);
+                    }
+                    else if (filter.op == SearchCriteriaFilterOperator.like)
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        var getter = Expression.Property(parameter, filter.name);                   
+                        var stringContainsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+                        var containsCall = Expression.Call(getter, stringContainsMethod, Expression.Constant(filter.value, typeof(string)));
+                        Expression<Func<T, bool>> lambda = Expression.Lambda<Func<T, bool>>(containsCall, parameter);
+                        sequence = sequence.Where(lambda);
+                    }
+                }
+            }
+            IList<OrderByModel> orders = criteria.orders;
+            if (orders != null && orders.Count > 0 && !countOnly) 
+            {
+                foreach (var orderBy in orders) 
+                {
+                    if (orderBy.ascending) 
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));                      
+                        var sortExpression = Expression.Lambda<Func<T, object>>(Expression.Property(parameter, orderBy.name), parameter);
+                        sequence = ((IOrderedQueryable<T>)sequence).OrderBy(sortExpression);
+                    }
+                    else 
+                    {
+                        ParameterExpression parameter = Expression.Parameter(typeof(T));
+                        var sortExpression = Expression.Lambda<Func<T, object>>(Expression.Property(parameter, orderBy.name), parameter);
+                        sequence = ((IOrderedQueryable<T>)sequence).OrderByDescending(sortExpression);
+                    }
+                }
+            }
+            else
+            {
+                sequence = ((IOrderedQueryable<T>)sequence).OrderBy(x => (true));
+            }
+        }
     }
 }

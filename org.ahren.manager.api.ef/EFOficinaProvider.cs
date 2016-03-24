@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace org.ahren.manager.api.ef.entities
 {
-    public class OficinaProvider : IOficinaProvider
+    public class OficinaProvider : EFAbstractStorage<OficinaEntity>, IOficinaProvider
     {
 
         public IOficinaModel create(string denominacion, String ubigeo)

@@ -53,7 +53,9 @@
     <Compile Include="EFAbstractStorage.cs" />
     <Compile Include="EFOficinaProvider.cs" />
     <Compile Include="OficinaAdapter.cs" />
+    <Compile Include="PrecompiledRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\org.ahren.manager.api.ef.entities\org.ahren.api.ef.entities.csproj">
